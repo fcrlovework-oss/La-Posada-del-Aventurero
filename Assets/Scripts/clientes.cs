@@ -20,7 +20,7 @@ namespace clientes
         public string economia;
         public int saldo;
         public int tiempoEspera;
-        public string caracter;
+        //public string caracter;
 
         public string MostrarDatos()
         {
