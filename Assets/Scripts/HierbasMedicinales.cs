@@ -9,6 +9,7 @@ public class HierbasMedicinales : MonoBehaviour
     string[] hierbasMedicinales = { "🌼", "🌷", "🥀", "🍀", "🌱", "🍁", "🌰", "🍄", "🌿", "🍂" };
 
     //Creamos una variable para cada hierba:
+    int[] inventarioHierbas = {}
     int margarita;
     int tulipan;
     int rosa;
@@ -19,6 +20,7 @@ public class HierbasMedicinales : MonoBehaviour
     int setaRoja;
     int hierbaSanJuan;
     int hojaDeViento;
+    int perlaMágica;
 
     //Este booleano es para decidir salir a buscar hierbas:
     public bool buscarHierbas;
@@ -44,6 +46,7 @@ public class HierbasMedicinales : MonoBehaviour
             if (energia < 10)
             {
                 print("Estas demasiado cansado para salir, recupera energia primero");
+                buscarHierbas = false;
                 return;
             }
             else
@@ -74,67 +77,88 @@ public class HierbasMedicinales : MonoBehaviour
 
     void HierbasEncontradasJardin() //{ "🌼", "🌷", "🥀", "🍀", "🌱", "🍁", "🌰", "🍄", "🌿", "🍂" };
     {
-        for(int i = 0; i < paseos.Length; i++)
+        int margaritacontabilidad = 0;
+        int tulipancontabilidad = 0;
+        int rosacontabilidad = 0;
+        int trebol4hojascontabilidad = 0;
+        int broteDeSojacontabilidad = 0;
+        int hojaDeArcecontabilidad = 0;
+        int avellanacontabilidad = 0;
+        int setaRojacontabilidad = 0;
+        int hierbaSanJuancontabilidad = 0;
+        int hojaDeVientocontabilidad = 0;
+
+        //Aqui registramos lo encontrado en los tres paseos:
+        for (int i = 0; i < paseos.Length; i++)
         {
-            if (paseos[i] == "🌼")
-            {
-                margarita++;
-                print("Has encontrado " + margarita + (margarita > 1 ? " margaritas!" : " margarita!"));
-            }   
-                
-            if (paseos[i] == "🌷") 
-            {
-                tulipan++;
-                print("Has encontrado " + tulipan + (tulipan > 1 ? " tulipanes!" : " tulipán!"));
-            }
-
-            if (paseos[i] == "🥀") 
-            {
-                rosa++;
-                print("Has encontrado " + rosa + (rosa > 1 ? " rosas!" : " rosa!"));
-            }
-
-            if (paseos[i] == "🍀") 
-            {
-                trebol4hojas++;
-                print("Has encontrado " + trebol4hojas + (trebol4hojas > 1 ? " treboles de 4 hojas!" : " trebol de 4 hojas!"));
-            }
-
-            if (paseos[i] == "🌱") 
-            {
-                broteDeSoja++;
-                print("Has encontrado " + broteDeSoja + (broteDeSoja > 1 ? " brotes de Soja!" : " brote de Soja!!"));
-            }
-            if (paseos[i] == "🍁") 
-            {
-                hojaDeArce++;
-                print("Has encontrado " + hojaDeArce + (hojaDeArce > 1 ? " hojas de Arce!" : " hojas de Arce!"));
-            }
-            if (paseos[i] == "🌰") 
-            {
-                avellana++;
-                print("Has encontrado " + avellana + (avellana > 1 ? " avellanas!" : " avellana!"));
-            }
-            if (paseos[i] == "🍄") 
-            {
-                setaRoja++;
-                print("Has encontrado " + setaRoja + (setaRoja > 1 ? " setas rojas!" : " seta roja!"));
-            }
-            if (paseos[i] == "🌿") 
-            {
-                hierbaSanJuan++;
-                print("Has encontrado " + hierbaSanJuan + (hierbaSanJuan > 1 ? " hierbas de San Juan!" : " hierba de San Juan!"));
-            }
-            if (paseos[i] == "🍂") 
-            {
-                hojaDeViento++;
-                print("Has encontrado " + hojaDeViento + (hojaDeViento > 1 ? " hojas de viento!" : " hoja de viento!"));
-            }
+            if (paseos[i] == "🌼") margaritacontabilidad++;
+            if (paseos[i] == "🌷") tulipancontabilidad++;
+            if (paseos[i] == "🥀") rosacontabilidad++;
+            if (paseos[i] == "🍀") trebol4hojascontabilidad++;
+            if (paseos[i] == "🌱") broteDeSojacontabilidad++;
+            if (paseos[i] == "🍁") hojaDeArcecontabilidad++;
+            if (paseos[i] == "🌰") avellanacontabilidad++;
+            if (paseos[i] == "🍄") setaRojacontabilidad++;
+            if (paseos[i] == "🌿") hierbaSanJuancontabilidad++;
+            if (paseos[i] == "🍂") hojaDeVientocontabilidad++;
         }
 
-        if(paseos[0] == paseos[1] && paseos[1] == paseos[2])
+        //Ahora anunciamos lo encontrado y lo sumamos a la variable general:
+        if(margaritacontabilidad > 0)
+        {
+            print("Has encontrado " + margaritacontabilidad + (margaritacontabilidad !=1 ? " margaritas" : " margarita"));
+            margarita += margaritacontabilidad;
+        }
+        if (tulipancontabilidad > 0)
+        {
+            print("Has encontrado " + tulipancontabilidad + (tulipancontabilidad != 1 ? " tulipanes" : " tulipan"));
+            tulipan += tulipancontabilidad;
+        }
+        if (rosacontabilidad > 0)
+        {
+            print("Has encontrado " + rosacontabilidad + (rosacontabilidad != 1 ? " rosas" : " rosa"));
+            rosa += rosacontabilidad;
+        }
+        if (trebol4hojascontabilidad > 0)
+        {
+            print("Has encontrado " + trebol4hojascontabilidad + (trebol4hojascontabilidad != 1 ? " tréboles de 4 hojas" : " trébol de 4 hojas"));
+            trebol4hojas += trebol4hojascontabilidad;
+        }
+        if (broteDeSojacontabilidad > 0)
+        {
+            print("Has encontrado " + broteDeSojacontabilidad + (broteDeSojacontabilidad != 1 ? " brotes de Soja" : " brote de Soja"));
+            broteDeSoja += broteDeSojacontabilidad;
+        }
+        if (hojaDeArcecontabilidad > 0)
+        {
+            print("Has encontrado " + hojaDeArcecontabilidad + (hojaDeArcecontabilidad != 1 ? " hojas de Arce" : " hoja de Arce"));
+            hojaDeArce += hojaDeArcecontabilidad;
+        }
+        if (avellanacontabilidad > 0)
+        {
+            print("Has encontrado " + avellanacontabilidad + (avellanacontabilidad != 1 ? " avellanas" : " avellana"));
+            avellana += avellanacontabilidad;
+        }
+        if (setaRojacontabilidad > 0)
+        {
+            print("Has encontrado " + setaRojacontabilidad + (setaRojacontabilidad != 1 ? " setas roja" : " seta roja"));
+            setaRoja += setaRojacontabilidad;
+        }
+        if (hierbaSanJuancontabilidad > 0)
+        {
+            print("Has encontrado " + hierbaSanJuancontabilidad + (hierbaSanJuancontabilidad != 1 ? " hierbas de San Juan" : " hierba de San Juan"));
+            hierbaSanJuan += hierbaSanJuancontabilidad;
+        }
+        if (hojaDeVientocontabilidad > 0)
+        {
+            print("Has encontrado " + hojaDeVientocontabilidad + (hojaDeVientocontabilidad != 1 ? " hojas de Viento" : " hoja de Viento"));
+            hojaDeViento += hojaDeVientocontabilidad;
+        }
+
+        if (paseos[0] == paseos[1] && paseos[1] == paseos[2])
         {
             print("¡Has encontrado una perla para hacer pociones mágicas!");
+            perlaMágica++;
         }
     }
 }
