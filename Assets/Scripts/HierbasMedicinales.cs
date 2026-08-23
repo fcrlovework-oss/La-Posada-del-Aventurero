@@ -1,4 +1,4 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections.Generic; //esto lo creamos para poder usar dictionary.
 using UnityEngine;
 
 public class HierbasMedicinales : MonoBehaviour
@@ -9,7 +9,7 @@ public class HierbasMedicinales : MonoBehaviour
     string[] hierbasMedicinales = { "🌼", "🌷", "🥀", "🍀", "🌱", "🍁", "🌰", "🍄", "🌿", "🍂" };
 
     //Creamos una variable para cada hierba:
-    int[] inventarioHierbas = {}
+    List<hierbas> inventario = new List<hierbas>();
     int margarita;
     int tulipan;
     int rosa;
@@ -30,7 +30,7 @@ public class HierbasMedicinales : MonoBehaviour
    
 
     //Esta es tu energía, la gastas cada vez que sales:
-    int energia;
+    static public int energia;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

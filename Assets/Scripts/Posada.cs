@@ -14,12 +14,13 @@ public class Posada : MonoBehaviour
     bool contadorFinaliza;
     float contadorTiempo = 0;
     float proximoCliente;
+    static public int saldoJugador;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        saldoJugador = 1000;
     }
 
     // Update is called once per frame
