@@ -317,13 +317,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334463195}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2574479, y: 0.36570635, z: -0.1059698, w: 0.8881159}
-  m_LocalPosition: {x: 3, y: 29.9, z: -48}
-  m_LocalScale: {x: 0.85, y: 1.615, z: 0.85}
+  m_LocalRotation: {x: 0.13735583, y: -0.07411035, z: -0.005001285, w: 0.98773277}
+  m_LocalPosition: {x: 164.7, y: 265.2, z: -955.2}
+  m_LocalScale: {x: -5.7, y: -10.83, z: -5.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 32.33, y: 44.763, z: 0.005}
+  m_LocalEulerAnglesHint: {x: 15.7, y: -8.83, z: -1.8}
 --- !u!114 &334463199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoPlanetas
   camaraJugador: {fileID: 334463197}
-  velocidadCamara: 0
+  sensibilidadCamara: 0
   "jugadorSue\xF1o": {fileID: 1404228618}
   estrella: {fileID: 1902432771}
   planeta1: {fileID: 1824351336}
@@ -901,7 +901,7 @@ Transform:
   m_GameObject: {fileID: 1821661161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.9736, y: -1.51715, z: -15.0168}
+  m_LocalPosition: {x: 8.9736, y: -1.51715, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

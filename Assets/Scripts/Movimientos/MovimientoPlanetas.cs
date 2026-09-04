@@ -11,9 +11,9 @@ public class MovimientoPlanetas : MonoBehaviour
 
     //camara:
     public Camera camaraJugador;
-    public float velocidadCamara;
     Vector3 rotacionCamara;
-    public Vector3 posicionamientoCamara;
+    float rotacionVerticalCamara;
+    float rotacionhorizontalCamara;
     public float sensibilidadCamara;
 
 
@@ -118,10 +118,11 @@ public class MovimientoPlanetas : MonoBehaviour
     void CamaraEscena()
     {
         rotacionCamara = controlesPlanetas.Player.Look.ReadValue<Vector2>();
-        camaraJugador.transform.position = jugadorSueño.transform.position + posicionamientoCamara;
-        camaraJugador.transform.LookAt(jugadorSueño.transform);
-
-
+        rotacionhorizontalCamara += rotacionCamara.x * sensibilidadCamara;
+        rotacionVerticalCamara += rotacionCamara.y * sensibilidadCamara;
+        rotacionVerticalCamara = Mathf.Clamp(rotacionVerticalCamara, -30f, 60f);
+        camaraJugador.transform.rotation = Quaternion.Euler(rotacionVerticalCamara, rotacionhorizontalCamara, 0);
+        Debug.Log(rotacionCamara);
     }
 
 
