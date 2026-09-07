@@ -32,6 +32,13 @@ public class MovimientoPlanetas : MonoBehaviour
     float velocidadPlaneta3;
     float velocidadPlaneta4;
 
+    //Atributos Camara:
+    public Transform camaraplanetas;
+    public float velocidadRotacionCamara = 200;
+    public float velocidadRotacionVerticalCamara = 100;
+    float anguloVerticalCamara;
+    Quaternion rotacioninicialCamara;
+
     private void Awake()
     {
         controlesPlanetas = new InputSystem_Actions();
@@ -57,11 +64,15 @@ public class MovimientoPlanetas : MonoBehaviour
         estrella.transform.rotation = Quaternion.Euler(30f, 0f, 0f);
         planeta1.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
         planeta2.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+
+        //Esto guarda la rotacion inicial de la camara:
+        rotacioninicialCamara = camaraplanetas.transform.localRotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+        ConfiguracionCamara();
         Rotaciones();
         if (movimientoDesdeOtroScript == true)
         {
@@ -71,6 +82,19 @@ public class MovimientoPlanetas : MonoBehaviour
         {
             MovimientoJugadorPlanetas();
         }
+    }
+
+    void ConfiguracionCamara()
+    {
+        //rotacion Horizontal camara:
+        jugadorSueño.transform.Rotate(jugadorSueño.transform.up * Input.GetAxis("Mouse X")* Time.deltaTime * velocidadRotacionCamara);
+
+        //Rotacion Vertical Camara:
+        anguloVerticalCamara += Input.GetAxis("Mouse Y") * Time.deltaTime * velocidadRotacionVerticalCamara;
+        anguloVerticalCamara = Mathf.Clamp(anguloVerticalCamara, -30, 30);
+        camaraplanetas.transform.localRotation = rotacioninicialCamara * Quaternion.Euler(-anguloVerticalCamara, 0f, 0f);
+
+        Debug.Log(camaraplanetas.localEulerAngles);
     }
 
     void MovimientoJugadorPlanetas()
