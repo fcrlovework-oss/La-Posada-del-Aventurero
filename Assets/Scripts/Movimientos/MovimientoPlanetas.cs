@@ -6,16 +6,9 @@ public class MovimientoPlanetas : MonoBehaviour
     1. Configurar el movimiento normal del jugador (adelante, atras y a los lados) // ¡HECHO!//
     2. rotacion sobre si mismo de todos losplanetas y la estrella. // ¡¡HECHO!! //
     3. Hacer que todos los planetas giren alrededor de la estrella. // ¡¡HECHO!! //
-    4. Haremos que la camara mire y siga al jugador. Y pueda controlarse con el raton.
      */
 
-    //camara:
-    public Camera camaraJugador;
-    Vector3 rotacionCamara;
-    float rotacionVerticalCamara;
-    float rotacionhorizontalCamara;
-    public float sensibilidadCamara;
-
+    
 
     //GameObjects con movimiento de la escena:
     public GameObject jugadorSueño;
@@ -55,7 +48,6 @@ public class MovimientoPlanetas : MonoBehaviour
 
     void Start()
     {
-        sensibilidadCamara = 4f;
         velocidadJugadorSueño = 5f;
         velocidadEstrella = 5f;
         velocidadPlaneta1 = 8f;
@@ -70,7 +62,6 @@ public class MovimientoPlanetas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CamaraEscena();
         Rotaciones();
         if (movimientoDesdeOtroScript == true)
         {
@@ -115,15 +106,5 @@ public class MovimientoPlanetas : MonoBehaviour
         planeta4.transform.RotateAround(estrella.transform.position, Vector3.up, 7f * Time.deltaTime);
     }
 
-    void CamaraEscena()
-    {
-        rotacionCamara = controlesPlanetas.Player.Look.ReadValue<Vector2>();
-        rotacionhorizontalCamara += rotacionCamara.x * sensibilidadCamara;
-        rotacionVerticalCamara += rotacionCamara.y * sensibilidadCamara;
-        rotacionVerticalCamara = Mathf.Clamp(rotacionVerticalCamara, -30f, 60f);
-        camaraJugador.transform.rotation = Quaternion.Euler(rotacionVerticalCamara, rotacionhorizontalCamara, 0);
-        Debug.Log(rotacionCamara);
-    }
-
-
+    
 }
