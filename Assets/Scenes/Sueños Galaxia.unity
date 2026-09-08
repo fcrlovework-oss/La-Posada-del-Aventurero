@@ -892,8 +892,8 @@ MonoBehaviour:
   movimientoDesdeOtroScript: 0
   "velocidadJugadorSue\xF1o": 0
   camaraplanetas: {fileID: 334463198}
-  velocidadRotacionCamara: 200
-  velocidadRotacionVerticalCamara: 100
+  velocidadRotacionCamara: 100
+  velocidadZoom: 50
 --- !u!4 &1821661163
 Transform:
   m_ObjectHideFlags: 0
