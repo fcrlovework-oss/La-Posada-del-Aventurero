@@ -893,7 +893,7 @@ MonoBehaviour:
   "velocidadJugadorSue\xF1o": 0
   camaraplanetas: {fileID: 334463198}
   velocidadRotacionCamara: 100
-  velocidadZoom: 50
+  velocidadZoom: 500
 --- !u!4 &1821661163
 Transform:
   m_ObjectHideFlags: 0

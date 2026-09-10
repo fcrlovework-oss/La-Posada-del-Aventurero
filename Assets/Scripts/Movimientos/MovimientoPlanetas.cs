@@ -101,22 +101,15 @@ public class MovimientoPlanetas : MonoBehaviour
         camaraplanetas.transform.localRotation = Quaternion.Euler(rotacionInicialCamara.x - anguloVerticalCamara, rotacionInicialCamara.y, rotacionInicialCamara.z); //ponemos los angulos iniciales que registramos y al de x le restamos(porque esta invertido) el movimineto del raton vertical.
 
         //Zoom Camara:
-        //Primero calculamos la distancia que tiene con el jugador para marcar los limites del zoom.
-        float distanciaJugadorcamara = Vector3.Distance(jugadorSueño.transform.position, camaraplanetas.transform.position);
-        float valorZoom = Input.GetAxis("Mouse ScrollWheel");
-        Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-        Debug.Log(distanciaJugadorcamara);
+        float distanciaJugadorCamara = Vector3.Distance(jugadorSueño.transform.position, camaraplanetas.transform.position);
+        float zoomTrasero = Input.GetAxis("Mouse ScrollWheel");
+        Debug.Log("Distancia:" + distanciaJugadorCamara);
+        Debug.Log("Zoom:" + zoomTrasero);
 
-        if(distanciaJugadorcamara >= 5 || valorZoom < 0)
+        if (distanciaJugadorCamara > 4.37f || zoomTrasero < 0)
         {
-            camaraplanetas.transform.localPosition += Vector3.forward * valorZoom * velocidadZoom * Time.deltaTime;
+            camaraplanetas.transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * velocidadZoom * Time.deltaTime);
         }
-        Debug.Log("z camara" +camaraplanetas.transform.forward);
-
-
-
-
-
 
 
     }
