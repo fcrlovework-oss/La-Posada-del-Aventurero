@@ -288,6 +288,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
       propertyPath: velocidadRotacion
       value: 80
       objectReference: {fileID: 0}
@@ -702,6 +706,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
       propertyPath: velocidadRotacion
       value: 100
       objectReference: {fileID: 0}
@@ -950,10 +958,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: planeta 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5679656419569855684, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1118c85e9ff1d79408b798d3794aaa57, type: 2}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 0
@@ -964,6 +980,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
@@ -1087,6 +1107,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
       propertyPath: forward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
@@ -1230,10 +1254,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: planeta 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5679656419569855684, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4f0afd03ab02d5047bdf6e1e416d223d, type: 2}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 0
@@ -1241,6 +1273,10 @@ PrefabInstance:
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeZ
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: rotacionX
@@ -1338,10 +1374,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: planeta 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5679656419569855684, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 327dac4aea3964e47ad31dd142956b33, type: 2}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 1
@@ -1352,6 +1396,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
@@ -1393,6 +1441,10 @@ PrefabInstance:
     - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
       propertyPath: right
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1598490680810788437, guid: 6085e399a7730b244ad1c9a19622af32, type: 3}
       propertyPath: velocidadRotacion
@@ -1519,13 +1571,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: planeta 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: radioDeteccion
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: gravedadPlaneta
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5679656419569855684, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1ef9160973c35cc41adb45a39d27ce71, type: 2}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: rotacionX
@@ -1608,12 +1680,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6637933211032518581, guid: a4abeb8f5a0c971459ba927572192e9c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637933211032518581, guid: a4abeb8f5a0c971459ba927572192e9c, type: 3}
       propertyPath: nucleoGalaxia
       value: 
       objectReference: {fileID: 1001121516}
     - target: {fileID: 6637933211032518581, guid: a4abeb8f5a0c971459ba927572192e9c, type: 3}
       propertyPath: velocidadRotacionEstrella
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

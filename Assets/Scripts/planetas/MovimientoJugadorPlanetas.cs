@@ -16,6 +16,9 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
     InputSystem_Actions controlesMovimiento;
     public float velocidadJugadorSueño;
 
+    //esto luego se borra:
+    Vector3 posicionoriginalPruebas;
+
     private void Awake()
     {
         controlesMovimiento = new InputSystem_Actions();
@@ -36,6 +39,7 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
     {
         Debug.Log("Inicio MouseX" + Input.GetAxis("Mouse X"));
         velocidadJugadorSueño = 5f;
+        posicionoriginalPruebas = jugadorSueño.transform.position;
 
         //Esto guarda la rotacion inicial de la camara:
         //rotacioninicialCamara = camaraplanetas.transform.localRotation;
@@ -57,6 +61,13 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
         MovimientoJugador();
         //if (controlesMovimiento.Player.Jump.triggered & jugadorpuedeSaltar) Saltar();
         Saltar();
+
+        //esto luego se borra
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            jugadorSueño.transform.position = posicionoriginalPruebas;
+        }
+
     }
 
 
