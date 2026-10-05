@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovimientoPlanetas : MonoBehaviour
@@ -33,15 +32,6 @@ public class MovimientoPlanetas : MonoBehaviour
     float velocidadPlaneta3;
     float velocidadPlaneta4;
 
-    //Atributos Camara:
-    public Transform camaraplanetas;
-    public float velocidadRotacionCamara = 200;
-    public float velocidadZoom = 50;
-    float anguloVerticalCamara;
-    Vector3 rotacionInicialCamara;
-
-   
-
     private void Awake()
     {
         controlesPlanetas = new InputSystem_Actions();
@@ -59,7 +49,6 @@ public class MovimientoPlanetas : MonoBehaviour
     void Start()
     {
         Debug.Log("Inicio MouseX" + Input.GetAxis("Mouse X"));
-        rotacionInicialCamara = camaraplanetas.transform.localEulerAngles; //guardamos angulos iniciales
         velocidadJugadorSueño = 5f;
         velocidadEstrella = 5f;
         velocidadPlaneta1 = 8f;
@@ -77,7 +66,6 @@ public class MovimientoPlanetas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ConfiguracionCamara();
         Rotaciones();
         if (movimientoDesdeOtroScript == true)
         {
@@ -88,30 +76,6 @@ public class MovimientoPlanetas : MonoBehaviour
             MovimientoJugadorPlanetas();
         }
        
-    }
-
-    void ConfiguracionCamara()
-    {
-        //rotacion Horizontal camara:
-        jugadorSueño.transform.Rotate(jugadorSueño.transform.up * Input.GetAxis("Mouse X")* Time.deltaTime * velocidadRotacionCamara);
-
-        //Rotacion Vertical Camara:
-        anguloVerticalCamara += Input.GetAxis("Mouse Y") * Time.deltaTime * velocidadRotacionCamara; //guardamos el movimiento vertical del raton en una variable para luego asociarlo a la rotacion vertical de la camara.
-        anguloVerticalCamara = Mathf.Clamp(anguloVerticalCamara, -30, 30); //ponemos limites a las rotaciones verticales para que no gire sobre si mismo.
-        camaraplanetas.transform.localRotation = Quaternion.Euler(rotacionInicialCamara.x - anguloVerticalCamara, rotacionInicialCamara.y, rotacionInicialCamara.z); //ponemos los angulos iniciales que registramos y al de x le restamos(porque esta invertido) el movimineto del raton vertical.
-
-        //Zoom Camara:
-        float distanciaJugadorCamara = Vector3.Distance(jugadorSueño.transform.position, camaraplanetas.transform.position);
-        float zoomTrasero = Input.GetAxis("Mouse ScrollWheel");
-        Debug.Log("Distancia:" + distanciaJugadorCamara);
-        Debug.Log("Zoom:" + zoomTrasero);
-
-        if (distanciaJugadorCamara > 4.37f || zoomTrasero < 0)
-        {
-            camaraplanetas.transform.Translate(Vector3.forward * Input.GetAxis("Mouse ScrollWheel") * velocidadZoom * Time.deltaTime);
-        }
-
-
     }
 
     void MovimientoJugadorPlanetas()
