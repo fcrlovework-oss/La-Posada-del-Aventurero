@@ -5,9 +5,10 @@ public class DetectorColisionesPlanetas : MonoBehaviour
     
     //Esto lo creamos para captar el rigidbody del player:
     private Rigidbody playerbody;
+
     
     //Esta variable es accesible desde el hijo para saber si el jugador esta sobre el planeta.
-    [HideInInspector]
+    [HideInInspector] 
     public bool jugadorDentro;
 
     private void Awake()

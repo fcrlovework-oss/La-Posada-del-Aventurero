@@ -4,7 +4,7 @@ public class MovimientosCamara : MonoBehaviour
 {
     //Atributos:
     InputSystem_Actions camaraActions;
-    MovimientoPlanetas jugadorEscenaPlanetas;
+    MovimientoJugadorPlanetas jugadorEscenaPlanetas;
     public Transform camaraplanetas;
     public float velocidadRotacionCamara = 200;
     public float velocidadZoom = 50;
@@ -20,7 +20,7 @@ public class MovimientosCamara : MonoBehaviour
     private void Awake()
     {
         camaraActions = new InputSystem_Actions();
-        jugadorEscenaPlanetas = GetComponent<MovimientoPlanetas>();
+        jugadorEscenaPlanetas = GetComponent<MovimientoJugadorPlanetas>();
     }
 
     private void OnEnable()
