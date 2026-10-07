@@ -4,11 +4,14 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
 {
     //GameObjects con movimiento de la escena:
     public GameObject jugadorSueño;
+    [HideInInspector]
+    public int vidaJugadorPlanetas;
 
     //elementos para el salto:
     [Header("Indica aquí el impulso del salto")]
     public float impulsoSalto;
-    Rigidbody rigidbodyJugadorSueño;
+    [HideInInspector]
+    public Rigidbody rigidbodyJugadorSueño;
     private bool jugadorpuedeSaltar;
 
     //Movimiento jugador:
@@ -17,13 +20,18 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
     public float velocidadJugadorSueño;
 
     //esto luego se borra:
-    Vector3 posicionoriginalPruebas;
+    [HideInInspector]
+    public Vector3 posicionoriginalJugador;
 
     private void Awake()
     {
         controlesMovimiento = new InputSystem_Actions();
         rigidbodyJugadorSueño = jugadorSueño.GetComponent<Rigidbody>();
-        
+
+
+        //Con esto evitamos que le afecte la rotacion en todos los angulos.
+        rigidbodyJugadorSueño.constraints = RigidbodyConstraints.FreezeRotation;
+
     }
     private void OnEnable()
     {
@@ -37,24 +45,16 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Inicio MouseX" + Input.GetAxis("Mouse X"));
         velocidadJugadorSueño = 5f;
-        posicionoriginalPruebas = jugadorSueño.transform.position;
+        posicionoriginalJugador = jugadorSueño.transform.position;
+        vidaJugadorPlanetas = 10;
 
         //Esto guarda la rotacion inicial de la camara:
         //rotacioninicialCamara = camaraplanetas.transform.localRotation;
     }
 
 
-    private void OnCollisionStay(Collision collision)
-    {
-        jugadorpuedeSaltar = true;
-        
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        jugadorpuedeSaltar = false;
-    }
+    
     // Update is called once per frame
     void Update()
     {
@@ -62,11 +62,7 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
         //if (controlesMovimiento.Player.Jump.triggered & jugadorpuedeSaltar) Saltar();
         Saltar();
 
-        //esto luego se borra
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            jugadorSueño.transform.position = posicionoriginalPruebas;
-        }
+        
 
     }
 
@@ -87,6 +83,8 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
         rigidbodyJugadorSueño.AddForce(Vector3.up * impulsoSalto);
     }
 
-
    
+
+
+
 }
