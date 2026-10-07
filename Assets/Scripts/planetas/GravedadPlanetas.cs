@@ -20,11 +20,16 @@ public class GravedadPlanetas : MonoBehaviour
         Collider[] objetos = Physics.OverlapSphere(transform.position, radioDeteccion);
         for (int i = 0; i < objetos.Length; i++)
         {
+            Debug.Log("Entra en el bucle de gravedad");
             Rigidbody rbObjeto = objetos[i].GetComponent<Rigidbody>();
             if(rbObjeto == playerbody)
             {
+                Debug.Log("Jugador Gravedad");
                 direccionGravedad = transform.position - playerbody.transform.position;
                 playerbody.AddForce(direccionGravedad.normalized * gravedadPlaneta);
+
+                //queda pendiente arreglar esto:
+                if (MovimientoJugadorPlanetas.fueraGravedad == true) return;
             }
         }
         

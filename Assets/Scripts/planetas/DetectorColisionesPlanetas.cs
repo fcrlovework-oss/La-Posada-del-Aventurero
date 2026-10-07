@@ -4,22 +4,30 @@ public class DetectorColisionesPlanetas : MonoBehaviour
 {
 
     //Esto lo creamos para captar el rigidbody del player:
-    Rigidbody playerbody;
+    public MovimientoJugadorPlanetas movimientoJugador;
 
+    [HideInInspector]
+    public static bool jugadorPisaTierra;
+        
     
-    //Esta variable es accesible desde el hijo para saber si el jugador esta sobre el planeta.
-    [HideInInspector] 
-    public bool jugadorDentro;
-
-    private void Awake()
+    private void OnCollisionStay(Collision collision)
     {
-        playerbody = GameObject.Find("Jugador").GetComponent<Rigidbody>();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.rigidbody == playerbody)
+        if(collision.rigidbody == movimientoJugador.jugadorRb)
         {
-            jugadorDentro = true;
+            Debug.Log("Jugador Detectado");
+            jugadorPisaTierra = true;
         }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.rigidbody == movimientoJugador.jugadorRb)
+        {
+            Debug.Log("Jugador Sale");
+            jugadorPisaTierra = true;
+        }
+    }
+
+    
+
 }

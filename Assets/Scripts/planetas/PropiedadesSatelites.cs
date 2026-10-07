@@ -13,7 +13,8 @@ public class PropiedadesSatelites : MonoBehaviour
         "Doble Impulso",
         "Reinicio",
         "Restauravida", 
-        "Aumento Velocidad Planetas", 
+        "Aumento Velocidad Jugador",
+        "Activa Rotacion Planeta",
         "Cambio de Propiedades"
     };
 
@@ -27,11 +28,7 @@ public class PropiedadesSatelites : MonoBehaviour
 
     private void Update()
     {
-        if (detectorPlanetaPadre.jugadorDentro == true)
-        {
-            ActivarPropiedad();
-            detectorPlanetaPadre.jugadorDentro = false;
-        }
+        
     }
 
 
@@ -50,7 +47,8 @@ public class PropiedadesSatelites : MonoBehaviour
         if (propiedadActual == "Doble Impulso") DobleImpulso();
         if (propiedadActual == "Reinicio") Reinicio();
         if (propiedadActual == "Restauravida") Restauravida();
-        if (propiedadActual == "Aumento Velocidad Planetas") AumentoVelocidadPlanetas();
+        if (propiedadActual == "Aumento Velocidad Jugador") AumentoVelocidadJugador();
+        if (propiedadActual == "Activa Rotacion Planeta") ActivaRotacionPlaneta();
         if (propiedadActual == "Cambio de Propiedades") CambioPropiedades();
     }
     
@@ -74,7 +72,12 @@ public class PropiedadesSatelites : MonoBehaviour
     {
 
     }
-    void AumentoVelocidadPlanetas()
+    void AumentoVelocidadJugador()
+    {
+
+    }
+
+    void ActivaRotacionPlaneta()
     {
 
     }

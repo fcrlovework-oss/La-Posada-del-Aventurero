@@ -2,35 +2,31 @@ using UnityEngine;
 
 public class MovimientoJugadorPlanetas : MonoBehaviour
 {
-    //GameObjects con movimiento de la escena:
+    //Atributos necesarios para movimiento y salto del jugador:
     public GameObject jugadorSueño;
-    [HideInInspector]
-    public int vidaJugadorPlanetas;
-
-    //elementos para el salto:
-    [Header("Indica aquí el impulso del salto")]
-    public float impulsoSalto;
-    [HideInInspector]
-    public Rigidbody rigidbodyJugadorSueño;
-    private bool jugadorpuedeSaltar;
-
-    //Movimiento jugador:
     Vector3 movimientoJugadorPlanetas;
-    InputSystem_Actions controlesMovimiento;
     public float velocidadJugadorSueño;
+    [HideInInspector] public static bool fueraGravedad;
 
-    //esto luego se borra:
-    [HideInInspector]
-    public Vector3 posicionoriginalJugador;
+    [Header("Indica aquí el impulso del salto")]
+    public float impulsoSalto = 1000;
+
+    [HideInInspector] public InputSystem_Actions controlesMovimiento;
+    [HideInInspector] public Rigidbody jugadorRb;
+
+    //Vida del jugador:
+    [HideInInspector] public int vidaJugadorPlanetas = 10;
 
     private void Awake()
     {
+        //Aactivamos los sistemas de movimiento:
         controlesMovimiento = new InputSystem_Actions();
-        rigidbodyJugadorSueño = jugadorSueño.GetComponent<Rigidbody>();
 
+        //Buscamos el Rigidbody del jugador:
+        jugadorRb = jugadorSueño.GetComponent<Rigidbody>();
 
-        //Con esto evitamos que le afecte la rotacion en todos los angulos.
-        rigidbodyJugadorSueño.constraints = RigidbodyConstraints.FreezeRotation;
+        //Con esto evitamos que al jugador le afecte la rotacion en todos los angulos.
+        jugadorRb.constraints = RigidbodyConstraints.FreezeRotation;
 
     }
     private void OnEnable()
@@ -45,28 +41,19 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
 
     void Start()
     {
-        velocidadJugadorSueño = 5f;
-        posicionoriginalJugador = jugadorSueño.transform.position;
         vidaJugadorPlanetas = 10;
-
+        velocidadJugadorSueño = 10f;
+        Debug.Log("Tienes: " + vidaJugadorPlanetas + " vidas");
         //Esto guarda la rotacion inicial de la camara:
         //rotacioninicialCamara = camaraplanetas.transform.localRotation;
     }
-
-
     
     // Update is called once per frame
     void Update()
     {
         MovimientoJugador();
-        //if (controlesMovimiento.Player.Jump.triggered & jugadorpuedeSaltar) Saltar();
-        Saltar();
-
-        
-
+        if (DetectorColisionesPlanetas.jugadorPisaTierra == true) Saltar();
     }
-
-
 
     void MovimientoJugador()
     {
@@ -77,14 +64,15 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
         jugadorSueño.transform.Translate(movimientoJugadorPlanetas * velocidadJugadorSueño * Time.deltaTime);    
     }
 
-    public void Saltar()
+    void Saltar()
     {
-        if (controlesMovimiento.Player.Jump.triggered) 
-        rigidbodyJugadorSueño.AddForce(Vector3.up * impulsoSalto);
+        if (controlesMovimiento.Player.Jump.triggered)
+        {
+            fueraGravedad = true;
+            Debug.Log("Comienza salto");
+            DetectorColisionesPlanetas.jugadorPisaTierra = false;
+            jugadorRb.AddForce(Vector3.up * impulsoSalto);
+        }
     }
-
-   
-
-
 
 }

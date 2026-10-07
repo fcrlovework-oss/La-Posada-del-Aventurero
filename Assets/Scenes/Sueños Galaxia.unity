@@ -490,6 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1001121516}
+  - component: {fileID: 1001121517}
   - component: {fileID: 1001121515}
   - component: {fileID: 1001121514}
   - component: {fileID: 1001121513}
@@ -594,6 +595,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001121517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001121512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6f3090b41024246a6eccd2ebacdb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectorColisionesPlanetas
+  movimientoJugador: {fileID: 1821661162}
 --- !u!1 &1404228618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,9 +1107,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 1118c85e9ff1d79408b798d3794aaa57, type: 2}
     - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 1821661162}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: movimientoJugador
+      value: 
+      objectReference: {fileID: 1821661162}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 0
@@ -1171,11 +1193,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoPlanetas
   "jugadorSue\xF1o": {fileID: 1404228618}
-  vidaJugadorPlanetas: 0
-  impulsoSalto: 500
-  "rigidbodyJugadorSue\xF1o": {fileID: 0}
   "velocidadJugadorSue\xF1o": 50
-  posicionoriginalJugador: {x: 0, y: 0, z: 0}
+  impulsoSalto: 1000
+  jugadorRb: {fileID: 0}
+  vidaJugadorPlanetas: 0
 --- !u!4 &1821661163
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,9 +1413,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 4f0afd03ab02d5047bdf6e1e416d223d, type: 2}
     - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 1821661162}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: movimientoJugador
+      value: 
+      objectReference: {fileID: 1821661162}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 0
@@ -1505,16 +1534,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: radioDeteccion
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578385792254170825, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: gravedadPlaneta
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5679656419569855684, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 327dac4aea3964e47ad31dd142956b33, type: 2}
     - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 1821661162}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: movimientoJugador
+      value: 
+      objectReference: {fileID: 1821661162}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 1
@@ -1717,9 +1762,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 1ef9160973c35cc41adb45a39d27ce71, type: 2}
     - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 1821661162}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6977068494987920431, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
+      propertyPath: movimientoJugador
+      value: 
+      objectReference: {fileID: 1821661162}
     - target: {fileID: 8350683184708448502, guid: 21f7d75b96fa17b4692f8ecdae1336d3, type: 3}
       propertyPath: ejeX
       value: 1
