@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MovimientoJugadorPlanetas : MonoBehaviour
@@ -6,7 +7,7 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
     public GameObject jugadorSueño;
     Vector3 movimientoJugadorPlanetas;
     public float velocidadJugadorSueño;
-    [HideInInspector] public static bool fueraGravedad;
+    [HideInInspector] public static bool GravedadActiva;
 
     [Header("Indica aquí el impulso del salto")]
     public float impulsoSalto = 1000;
@@ -52,7 +53,7 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
     void Update()
     {
         MovimientoJugador();
-        if (DetectorColisionesPlanetas.jugadorPisaTierra == true) Saltar();
+        if (DetectorColisionesPlanetas.jugadorPuedeSaltar == true) Saltar();
     }
 
     void MovimientoJugador()
@@ -68,11 +69,20 @@ public class MovimientoJugadorPlanetas : MonoBehaviour
     {
         if (controlesMovimiento.Player.Jump.triggered)
         {
-            fueraGravedad = true;
+            GravedadActiva = false; //Desactivamos la gravedad del planeta o no podremos saltar.
             Debug.Log("Comienza salto");
-            DetectorColisionesPlanetas.jugadorPisaTierra = false;
+            DetectorColisionesPlanetas.jugadorPuedeSaltar = false;
             jugadorRb.AddForce(Vector3.up * impulsoSalto);
+            StartCoroutine(ControlGravedad());
         }
+    }
+
+    IEnumerator ControlGravedad()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Activo Gravedad con corrutina");
+        MovimientoJugadorPlanetas.GravedadActiva = true;
+
     }
 
 }

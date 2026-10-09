@@ -13,25 +13,34 @@ public class GravedadPlanetas : MonoBehaviour
     private void Awake()
     {
         playerbody = GameObject.Find("Jugador").GetComponent<Rigidbody>();
+        
     }
 
     private void FixedUpdate()
     {
-        Collider[] objetos = Physics.OverlapSphere(transform.position, radioDeteccion);
-        for (int i = 0; i < objetos.Length; i++)
+        if(MovimientoJugadorPlanetas.GravedadActiva)
         {
-            Debug.Log("Entra en el bucle de gravedad");
-            Rigidbody rbObjeto = objetos[i].GetComponent<Rigidbody>();
-            if(rbObjeto == playerbody)
+            //Esto crea un array con los objetos que detecte OverlapSphere
+            Collider[] objetos = Physics.OverlapSphere(transform.position, radioDeteccion);
+            for (int i = 0; i < objetos.Length; i++)
             {
-                Debug.Log("Jugador Gravedad");
-                direccionGravedad = transform.position - playerbody.transform.position;
-                playerbody.AddForce(direccionGravedad.normalized * gravedadPlaneta);
-
-                //queda pendiente arreglar esto:
-                if (MovimientoJugadorPlanetas.fueraGravedad == true) return;
+                Debug.Log("Entra en el bucle de gravedad");
+                Rigidbody rbObjeto = objetos[i].GetComponent<Rigidbody>();
+                if (rbObjeto == playerbody)
+                {
+                    Debug.Log("Jugador Gravedad");
+                    direccionGravedad = transform.position - playerbody.transform.position;
+                    playerbody.AddForce(direccionGravedad.normalized * gravedadPlaneta);
+                }
             }
         }
-        
     }
+    private void Update()
+    {
+        if (MovimientoJugadorPlanetas.GravedadActiva == true) Debug.Log("Gravedad Activa");
+        if (MovimientoJugadorPlanetas.GravedadActiva == false) Debug.Log("Gravedad Inactiva");
+    }
+
+    //Esta corrutina activa de nuevo la gravedad de los planetas.
+    
 }

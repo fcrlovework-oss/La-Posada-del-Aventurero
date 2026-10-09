@@ -7,7 +7,7 @@ public class DetectorColisionesPlanetas : MonoBehaviour
     public MovimientoJugadorPlanetas movimientoJugador;
 
     [HideInInspector]
-    public static bool jugadorPisaTierra;
+    public static bool jugadorPuedeSaltar; //Creamos esta variable para indicarle al InputControler que active el salto.
         
     
     private void OnCollisionStay(Collision collision)
@@ -15,7 +15,7 @@ public class DetectorColisionesPlanetas : MonoBehaviour
         if(collision.rigidbody == movimientoJugador.jugadorRb)
         {
             Debug.Log("Jugador Detectado");
-            jugadorPisaTierra = true;
+            jugadorPuedeSaltar = true;
         }
     }
 
@@ -24,7 +24,7 @@ public class DetectorColisionesPlanetas : MonoBehaviour
         if (collision.rigidbody == movimientoJugador.jugadorRb)
         {
             Debug.Log("Jugador Sale");
-            jugadorPisaTierra = true;
+            jugadorPuedeSaltar = true;
         }
     }
 
