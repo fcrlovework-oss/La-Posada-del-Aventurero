@@ -3,7 +3,9 @@ using UnityEngine;
 public class DetectorCaida : MonoBehaviour
 {
     MovimientoJugadorPlanetas jugador;
-    Vector3 posicionoriginalJugador;
+
+    [HideInInspector]
+    public Vector3 posicionoriginalJugador;
 
     private void Awake()
     {
