@@ -52,5 +52,6 @@ public class InterruptorActivacionSistemaSolar : MonoBehaviour
             rotacionSatélites[i].enabled = true;
         }
         activacionRotacionEstrella.enabled = true;
+        this.gameObject.SetActive(false);
     }
 }

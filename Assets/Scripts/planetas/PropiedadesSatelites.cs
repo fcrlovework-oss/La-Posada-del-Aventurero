@@ -5,11 +5,18 @@ public class PropiedadesSatelites : MonoBehaviour
     [Header ("Propiedad Actual de este Satélite")]
     public string propiedadActual;
 
+    MovimientoJugadorPlanetas jugadorBody;
+    private bool jugadorAfectado = false;
+
+    //En este array guardamos los distintos tipos de regalos que se pueden obtener:
+    private int regaloElegido;
+    object[] regaloSorpresa = new object[20];
+
     //Aqui quiero crear un array que contenga todos los metodos para luego usar un randomRange qu eelija uno especifico.
     private int posicionNombrePropiedad;
     private string[] nombresPropiedades = 
-    {   
-        "Resta Vida", 
+    {
+        "Regalo", 
         "Doble Impulso",
         "Reinicio",
         "Restauravida", 
@@ -24,26 +31,32 @@ public class PropiedadesSatelites : MonoBehaviour
     private void Awake()
     {
         detectorPlanetaPadre = GetComponentInParent<DetectorColisionesPlanetas>();
+        jugadorBody = GameObject.Find("Input Controller").GetComponent<MovimientoJugadorPlanetas>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.rigidbody == jugadorBody.jugadorRb) jugadorAfectado = true;
     }
 
     private void Update()
     {
-        
+        if (jugadorAfectado) ActivarPropiedad();
     }
-
-
 
     private void Start()
     {
+        //Esto da una propiedad aleatoria a cada planeta
         posicionNombrePropiedad = Random.Range(0, nombresPropiedades.Length);
         propiedadActual = nombresPropiedades[posicionNombrePropiedad];
-    }
 
-    
+        //Esto elige un regalo aleatorio:
+        regaloElegido = Random.Range(0, regaloSorpresa.Length);
+    }
 
     void ActivarPropiedad()
     {
-        if (propiedadActual == "Resta Vida") RestaVida();
+        if (propiedadActual == "Regalo") Regalo(regaloSorpresa[regaloElegido]);
         if (propiedadActual == "Doble Impulso") DobleImpulso();
         if (propiedadActual == "Reinicio") Reinicio();
         if (propiedadActual == "Restauravida") Restauravida();
@@ -53,9 +66,9 @@ public class PropiedadesSatelites : MonoBehaviour
     }
     
     //Estas propiedades solo se activan si el jugador pisa el planeta padre:
-    void RestaVida()
+    void Regalo(object regaloSorpresa)
     {
-
+        //esto lo programaré cuando aprenda la parte de inventario.
     }
 
     void DobleImpulso()
