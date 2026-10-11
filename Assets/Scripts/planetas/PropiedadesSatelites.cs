@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PropiedadesSatelites : MonoBehaviour
@@ -12,6 +13,7 @@ public class PropiedadesSatelites : MonoBehaviour
     private Renderer variacionColor;
     private Color colorOriginal;
 
+    //Atributos para afectar al jugador
     private MovimientoJugadorPlanetas jugadorBody;
     private DetectorCaida posicionInicialDelJugador;
 
@@ -36,6 +38,10 @@ public class PropiedadesSatelites : MonoBehaviour
     private DetectorColisionesPlanetas detectorPlanetaPadre;
     private RotacionPlanetas RotacionPlanetaActual;
 
+    //Atributos para reinicio, esta variable deberia recordar la posicion original del planeta que haya empezado a rotar.
+    //Pero me lo estoy pensando porque esto solo es complicado cuando el primer planeta es el que tiene esta propiedad.
+    private Vector3 posicionOriginalPlanetaPadre;
+
     // Metodos Básicos ---------------------------------------------------------------------------------------
 
     private void Awake()
@@ -54,6 +60,7 @@ public class PropiedadesSatelites : MonoBehaviour
         //Esto da una propiedad aleatoria a cada planeta
         posicionNombrePropiedad = Random.Range(0, nombresPropiedades.Length);
         propiedadActual = nombresPropiedades[posicionNombrePropiedad];
+        if (transform.parent.name == "planeta 4" && propiedadActual == "Activa Rotacion Planeta") CambioPropiedadLocal();
         ActivacionColores();
 
         //Esto elige un regalo aleatorio:
@@ -69,10 +76,8 @@ public class PropiedadesSatelites : MonoBehaviour
             Debug.Log("ReinicioPropiedades");
             jugadorBody.impulsoSalto = 1000f;
             jugadorBody.velocidadJugadorSueño = 10f;
-            posicionNombrePropiedad = Random.Range(0, nombresPropiedades.Length);
-            propiedadActual = nombresPropiedades[posicionNombrePropiedad];
-            ActivacionColores();
-            posicionInicialDelJugador.AnulacionYreinicioPropiedades = false;
+            CambioPropiedadesGenerales();
+            posicionInicialDelJugador.AnulacionYreinicioPropiedades = false; //este bool indica si caimos o no al vacío.
         }
         if (detectorPlanetaPadre.jugadorAfectadoPropiedades)
         {
@@ -95,7 +100,7 @@ public class PropiedadesSatelites : MonoBehaviour
         if (propiedadActual == "Restauravida") Restauravida();
         if (propiedadActual == "Aumento Velocidad Jugador") AumentoVelocidadJugador();
         if (propiedadActual == "Activa Rotacion Planeta") ActivaRotacionPlaneta();
-        if (propiedadActual == "Cambio de Propiedades") CambioPropiedades();
+        if (propiedadActual == "Cambio de Propiedades") CambioPropiedadesGenerales();
         detectorPlanetaPadre.jugadorAfectadoPropiedades = false;
     }
 
@@ -142,9 +147,31 @@ public class PropiedadesSatelites : MonoBehaviour
     {
         RotacionPlanetaActual.enabled = true;
     }
-    void CambioPropiedades()
+
+    void CambioPropiedadLocal()
     {
         posicionNombrePropiedad = Random.Range(0, nombresPropiedades.Length);
         propiedadActual = nombresPropiedades[posicionNombrePropiedad];
+        ActivacionColores();
+    }
+    void CambioPropiedadesGenerales()
+    {
+        detectorPlanetaPadre.jugadorAfectadoPropiedades = false;
+        PropiedadesSatelites[] propiedadesPlanetas = FindObjectsByType<PropiedadesSatelites>(FindObjectsSortMode.None);
+
+        for (int i = 0; i < propiedadesPlanetas.Length; i++)
+        {
+            propiedadesPlanetas[i].posicionNombrePropiedad = Random.Range(0, nombresPropiedades.Length);
+            propiedadesPlanetas[i].propiedadActual = propiedadesPlanetas[i].nombresPropiedades[propiedadesPlanetas[i].posicionNombrePropiedad];
+            if (propiedadesPlanetas[i].transform.parent.name == "planeta 4" && propiedadesPlanetas[i].propiedadActual == "Activa Rotacion Planeta")
+            {
+                propiedadesPlanetas[i].CambioPropiedadLocal();
+            }
+        }
+
+        for (int i = 0; i < propiedadesPlanetas.Length; i++)
+        {
+            propiedadesPlanetas[i].ActivacionColores();
+        }
     }
 }

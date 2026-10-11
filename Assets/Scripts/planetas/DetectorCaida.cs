@@ -26,6 +26,7 @@ public class DetectorCaida : MonoBehaviour
         {
             jugador.jugadorSueño.transform.position = posicionoriginalJugador;
             AnulacionYreinicioPropiedades = true;
+            Debug.Log("Se activa el reseteo de propiedades");
             jugador.vidaJugadorPlanetas -= 1;
             Debug.Log("Has perdido 1 vida, te quedan " + jugador.vidaJugadorPlanetas);
         }
