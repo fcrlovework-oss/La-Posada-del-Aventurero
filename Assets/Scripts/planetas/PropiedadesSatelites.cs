@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class PropiedadesSatelites : MonoBehaviour
 {
+    // Atributos -----------------------------------------------------------------
+    
     [Header ("Propiedad Actual de este Satélite")]
     public string propiedadActual;
+
+    //Atributos para gestionar los colores de los planetas:
+    InterruptorActivacionSistemaSolar reinicioColores;
     private Renderer variacionColor;
+    private Color colorOriginal;
 
     private MovimientoJugadorPlanetas jugadorBody;
-    private bool jugadorAfectado = false;
     private DetectorCaida posicionInicialDelJugador;
 
     //En este array guardamos los distintos tipos de regalos que se pueden obtener:
@@ -31,6 +36,8 @@ public class PropiedadesSatelites : MonoBehaviour
     private DetectorColisionesPlanetas detectorPlanetaPadre;
     private RotacionPlanetas RotacionPlanetaActual;
 
+    // Metodos Básicos ---------------------------------------------------------------------------------------
+
     private void Awake()
     {
         detectorPlanetaPadre = GetComponentInParent<DetectorColisionesPlanetas>();
@@ -38,6 +45,8 @@ public class PropiedadesSatelites : MonoBehaviour
         posicionInicialDelJugador = GameObject.Find("SueloDetectorCaida").GetComponent<DetectorCaida>();
         RotacionPlanetaActual = GetComponentInParent<RotacionPlanetas>();
         variacionColor = RotacionPlanetaActual.GetComponent<Renderer>();
+        colorOriginal = variacionColor.material.color;
+        reinicioColores = GameObject.Find("Interruptor").GetComponent<InterruptorActivacionSistemaSolar>();
     }
 
     private void Start()
@@ -50,24 +59,33 @@ public class PropiedadesSatelites : MonoBehaviour
         //Esto elige un regalo aleatorio:
         regaloElegido = Random.Range(0, regaloSorpresa.Length);
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.rigidbody == jugadorBody.jugadorRb)
-        {
-            //Con esto reiniciamos el valor del impulso en caso de que haya sido modificado por "DobleImpulso()" anteriormente.
-            jugadorBody.impulsoSalto = 1000;
-            jugadorBody.velocidadJugadorSueño = 50;
-            Debug.Log("Jugador Afectado por propiedadColision");
-            jugadorAfectado = true;
-
-        }
-    }
+       
 
     private void Update()
     {
-        if (jugadorAfectado) ActivarPropiedad();
+        if(posicionInicialDelJugador.AnulacionYreinicioPropiedades)
+        {
+            //Reiniciamos todo cuando cae al suelo:
+            Debug.Log("ReinicioPropiedades");
+            jugadorBody.impulsoSalto = 1000f;
+            jugadorBody.velocidadJugadorSueño = 10f;
+            posicionNombrePropiedad = Random.Range(0, nombresPropiedades.Length);
+            propiedadActual = nombresPropiedades[posicionNombrePropiedad];
+            ActivacionColores();
+            posicionInicialDelJugador.AnulacionYreinicioPropiedades = false;
+        }
+        if (detectorPlanetaPadre.jugadorAfectadoPropiedades)
+        {
+            //Con esto reiniciamos el valor del impulso en caso de que haya sido modificado por "DobleImpulso()" anteriormente.
+            jugadorBody.impulsoSalto = 1000f;
+            jugadorBody.velocidadJugadorSueño = 10f;
+            Debug.Log("Jugador Afectado por propiedadColision");
+            ActivarPropiedad();
+        }
+        if (reinicioColores.activacionSistema) variacionColor.material.color = colorOriginal;
     }
+
+    //Metodos Específicos ---------------------------------------------------------------------------------------
 
     void ActivarPropiedad()
     {
@@ -78,7 +96,7 @@ public class PropiedadesSatelites : MonoBehaviour
         if (propiedadActual == "Aumento Velocidad Jugador") AumentoVelocidadJugador();
         if (propiedadActual == "Activa Rotacion Planeta") ActivaRotacionPlaneta();
         if (propiedadActual == "Cambio de Propiedades") CambioPropiedades();
-        jugadorAfectado = false;
+        detectorPlanetaPadre.jugadorAfectadoPropiedades = false;
     }
 
     void ActivacionColores()
@@ -95,13 +113,14 @@ public class PropiedadesSatelites : MonoBehaviour
     //Estas propiedades solo se activan si el jugador pisa el planeta padre:
     void Regalo(object regaloSorpresa)
     {
-        
+
         //esto lo programaré cuando aprenda la parte de inventario.
+        print("Has acumulado un regalo");
     }
 
     void DobleImpulso()
     {
-        jugadorBody.impulsoSalto += 500;
+        jugadorBody.impulsoSalto += 500f;
     }
 
     void Reinicio()
@@ -112,10 +131,11 @@ public class PropiedadesSatelites : MonoBehaviour
     void Restauravida()
     {
         jugadorBody.vidaJugadorPlanetas = 10;
+        Debug.Log("Tu vida ha sido restaurada: " + jugadorBody.vidaJugadorPlanetas);
     }
     void AumentoVelocidadJugador()
     {
-        jugadorBody.velocidadJugadorSueño += 30;
+        jugadorBody.velocidadJugadorSueño += 30f;
     }
 
     void ActivaRotacionPlaneta()

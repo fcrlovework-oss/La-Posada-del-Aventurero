@@ -7,6 +7,9 @@ public class DetectorCaida : MonoBehaviour
     [HideInInspector]
     public Vector3 posicionoriginalJugador;
 
+    //Este bool es para anular los efectos de las propiedades.
+    public bool AnulacionYreinicioPropiedades = false;
+
     private void Awake()
     {
         jugador = GameObject.Find("Input Controller").GetComponent<MovimientoJugadorPlanetas>();
@@ -22,6 +25,7 @@ public class DetectorCaida : MonoBehaviour
         if (other.attachedRigidbody == jugador.jugadorRb)
         {
             jugador.jugadorSueño.transform.position = posicionoriginalJugador;
+            AnulacionYreinicioPropiedades = true;
             jugador.vidaJugadorPlanetas -= 1;
             Debug.Log("Has perdido 1 vida, te quedan " + jugador.vidaJugadorPlanetas);
         }

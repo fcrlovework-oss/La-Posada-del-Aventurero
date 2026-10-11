@@ -5,7 +5,8 @@ public class InterruptorActivacionSistemaSolar : MonoBehaviour
 {
     private MovimientoJugadorPlanetas toqueJugador;
     private RotacionEstrella activacionRotacionEstrella;
-    private bool activacionSistema = false;
+
+    [HideInInspector] public bool activacionSistema = false; //hay que recordar ponerlo en false de nuevo cuando salga del escenario.
 
     private void Awake()
     {
