@@ -152,6 +152,7 @@ public class PropiedadesSatelites : MonoBehaviour
     {
         posicionNombrePropiedad = Random.Range(0, nombresPropiedades.Length);
         propiedadActual = nombresPropiedades[posicionNombrePropiedad];
+        if (transform.parent.name == "planeta 4" && propiedadActual == "Activa Rotacion Planeta") CambioPropiedadLocal();
         ActivacionColores();
     }
     void CambioPropiedadesGenerales()
