@@ -9,6 +9,7 @@ public class RutinasPrefabs : MonoBehaviour
     [Header("Arrastra a aqui el prefab correspondiente")]
     public GameObject PrefabGenerador;
 
+
     private void Start()
     {
         StartCoroutine(RutinaPrefab(tiempoRutina));
@@ -17,7 +18,7 @@ public class RutinasPrefabs : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(PrefabGenerador, transform.position, Quaternion.identity);
+            Instantiate(PrefabGenerador, transform.position, transform.rotation);
             yield return new WaitForSeconds(segundos);
         }
     }

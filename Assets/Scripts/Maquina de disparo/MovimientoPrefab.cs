@@ -4,7 +4,6 @@ public class MovimientoPrefab : MonoBehaviour
 {
     //Atributos movimiento:
     [Header("Indica la dirección")]
-    public Vector3 direccionPrefab;
 
     [Header("Indica la velocidad")]
     public float velocidadPrefab;
@@ -14,12 +13,13 @@ public class MovimientoPrefab : MonoBehaviour
     private void Awake()
     {
         prefabRb = GetComponent<Rigidbody>();
-        prefabRb.constraints = RigidbodyConstraints.FreezeRotationY;
+        prefabRb.constraints = RigidbodyConstraints.FreezeRotationX;
+        prefabRb.constraints = RigidbodyConstraints.FreezeRotationZ;
     }
 
     private void Update()
     {
-        transform.Translate(direccionPrefab.normalized * velocidadPrefab * Time.deltaTime);
+        transform.Translate(transform.forward * velocidadPrefab * Time.deltaTime);
     }
 
 }
