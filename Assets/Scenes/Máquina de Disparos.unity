@@ -1984,6 +1984,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RutinasPrefabs
   tiempoRutina: 2
   PrefabGenerador: {fileID: 7260059394955767708, guid: 949e52153142d2743995d64fc31fcfc0, type: 3}
+  cantidadPrefab: 6
+  desaparicionPrefab: 1
+  tiempoDesaparicion: 3
 --- !u!1 &452440109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,6 +5793,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RutinasPrefabs
   tiempoRutina: 3
   PrefabGenerador: {fileID: 4883722220937901845, guid: 9449b491fd374b340a7a92886f15fa68, type: 3}
+  cantidadPrefab: 7
+  desaparicionPrefab: 0
+  tiempoDesaparicion: 0
 --- !u!1 &1047123895
 GameObject:
   m_ObjectHideFlags: 0
@@ -7438,6 +7444,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RutinasPrefabs
   tiempoRutina: 5
   PrefabGenerador: {fileID: 2264348127454928533, guid: 92cee6604e6bfd442891776146a47a83, type: 3}
+  cantidadPrefab: 4
+  desaparicionPrefab: 0
+  tiempoDesaparicion: 0
 --- !u!1 &1342270834
 GameObject:
   m_ObjectHideFlags: 0
@@ -7677,6 +7686,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RutinasPrefabs
   tiempoRutina: 5
   PrefabGenerador: {fileID: 8829632377830906838, guid: 454a1ec787ab39a428a5be0e40f476d7, type: 3}
+  cantidadPrefab: 5
+  desaparicionPrefab: 1
+  tiempoDesaparicion: 4
 --- !u!1 &1380052871
 GameObject:
   m_ObjectHideFlags: 0
@@ -8682,6 +8694,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RutinasPrefabs
   tiempoRutina: 2
   PrefabGenerador: {fileID: 1830800789552824170, guid: 9d5f2684a6fb4b04a8a7719803523561, type: 3}
+  cantidadPrefab: 10
+  desaparicionPrefab: 1
+  tiempoDesaparicion: 10
 --- !u!1 &1599084845
 GameObject:
   m_ObjectHideFlags: 0
@@ -8985,6 +9000,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RutinasPrefabs
   tiempoRutina: 1
   PrefabGenerador: {fileID: 2663900589664027627, guid: 6fd86b6d9343641418435a7fe0177f30, type: 3}
+  cantidadPrefab: 10
+  desaparicionPrefab: 0
+  tiempoDesaparicion: 0
 --- !u!1 &1629619988
 GameObject:
   m_ObjectHideFlags: 0
@@ -12537,7 +12555,7 @@ Transform:
   m_GameObject: {fileID: 2022780359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.69364, y: -0, z: -24.88179}
+  m_LocalPosition: {x: -10.02, y: -0, z: -24.88179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

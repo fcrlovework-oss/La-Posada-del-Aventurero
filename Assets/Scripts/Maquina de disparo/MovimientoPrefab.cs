@@ -4,6 +4,7 @@ public class MovimientoPrefab : MonoBehaviour
 {
     //Atributos movimiento:
     [Header("Indica la dirección")]
+    
 
     [Header("Indica la velocidad")]
     public float velocidadPrefab;
@@ -19,7 +20,7 @@ public class MovimientoPrefab : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(transform.forward * velocidadPrefab * Time.deltaTime);
+        transform.Translate(transform.forward * velocidadPrefab * Time.deltaTime, Space.Self);
     }
 
 }
