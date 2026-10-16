@@ -16,16 +16,21 @@ public class Disparo : MonoBehaviour
     //movimientoCañon:
     [Header("arrastra a aqui el cañon")]
     public GameObject cañon;
-    Vector3 movimientoCañon;
     Vector3 rotacionCañon;
+    Quaternion rotacionOriginal;
+
+    [Header("Escribe aqui la velocidad de rotacion del cañon")]
+    public float velocidadRotacionCañon;
+    
 
     private void Awake()
     {
         movimientoRaton = new InputSystem_Actions();
+        rotacionOriginal = cañon.transform.rotation;
     }
     private void Start()
     {
-        coordenadasRaton = Mouse.current.position.ReadValue();
+        coordenadasRaton = Mouse.current.position.ReadValue(); //con esto conseguimos la posicion del raton.
     }
 
     private void OnEnable()
@@ -40,16 +45,15 @@ public class Disparo : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log ("Posicion Ratón: " + coordenadasRaton);
         RotacionCañon();
         DisparoBala();
     }
 
     //Esto aun no funciona, debe hacer que el cañon rote con el movimiento del raton:
-    void RotacionCañon()
+    void RotacionCañon() //Esto lo escribio chat gpt vamos a tratar d eentenderlo.
     {
-        movimientoCañon = movimientoRaton.Player.Look.ReadValue<Vector2>();
-        movimientoCañon = new Vector3(movimientoCañon.x, movimientoCañon.y, 0);
-        rotacionCañon = new Vector3 (cañon.transform.rotation.x * movimientoCañon.x, cañon.transform.rotation.y * movimientoCañon.y, 0);
+        
     }
 
     void DisparoBala()
@@ -57,7 +61,6 @@ public class Disparo : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Instantiate(bala, puntoDeDisparo.transform.position, Quaternion.identity);
-            bala.transform.Translate(coordenadasRaton);
         }
     }
 }
