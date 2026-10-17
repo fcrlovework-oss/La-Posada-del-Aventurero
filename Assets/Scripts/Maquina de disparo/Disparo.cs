@@ -6,7 +6,6 @@ public class Disparo : MonoBehaviour
 {
     //Atributos
     Vector3 coordenadasRaton; //Esto lo usaremos para apuntar con el raton
-    InputSystem_Actions movimientoRaton;
      
 
     [Header("arrastra a aqui la bala")]
@@ -14,6 +13,7 @@ public class Disparo : MonoBehaviour
     public GameObject puntoDeDisparo;
 
     //movimientoCañon:
+    InputSystem_Actions movimientoRaton;
     [Header("arrastra a aqui el cañon")]
     public GameObject cañon;
     Vector3 rotacionCañon;
@@ -28,10 +28,6 @@ public class Disparo : MonoBehaviour
         movimientoRaton = new InputSystem_Actions();
         rotacionOriginal = cañon.transform.rotation;
     }
-    private void Start()
-    {
-        coordenadasRaton = Mouse.current.position.ReadValue(); //con esto conseguimos la posicion del raton.
-    }
 
     private void OnEnable()
     {
@@ -42,6 +38,10 @@ public class Disparo : MonoBehaviour
     {
         movimientoRaton.Disable();
     }
+    private void Start()
+    {
+        coordenadasRaton = Mouse.current.position.ReadValue(); //con esto conseguimos la posicion del raton.
+    }  
 
     private void Update()
     {

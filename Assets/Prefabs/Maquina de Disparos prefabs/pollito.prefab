@@ -48,6 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deccdf24f6f64034696df8b7a16e058e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoPrefab
+  bolaDeFuego: 0
+  veneno: 0
+  agua: 0
+  hoja: 0
+  estrella: 0
+  pollito: 1
   velocidadPrefab: 1
 --- !u!33 &5957888026486748782
 MeshFilter:
